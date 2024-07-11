@@ -91,14 +91,15 @@
 
 
 <section class="flex my-5">
-    <div class="w-full h-[200px] bg-gradient-to-r from-[#1488CC] to-[#2B32B2]">
-        <h1 class="whitespace-pre text-white text-2xl">Terpercaya di <br>Indonesia</h1>
-        <p class="text-white text-md">Mendukung usaha lokal.
+    <div class="w-full bg-gradient-to-r from-[#1488CC] to-[#2B32B2] p-10 flex flex-col justify-between">
+        <h1 class="whitespace-pre text-white text-4xl mb-5">Terpercaya di <br>Indonesia</h1>
+        <p class="text-white text-md w-[200px]">Mendukung usaha lokal.
             Kualitas Premium Jago</p>
-        <a href="">beli sekarang</a>
+        <a href="" class="text-white underline hover:text-blue-700">beli sekarang</a>
     </div>
-    <div class="w-full h-[200px] bg-gradient-to-r from-[#2193b0] to-[#6dd5ed]">
-
+    <div class="w-full bg-gradient-to-r from-[#2193b0] to-[#6dd5ed] p-10 flex flex-col justify-between">
+        <h1 class="whitespace-pre text-white text-4xl mb-5">IMEI Diuji &<br>Berfungsi</h1>
+        <a href="{{ route('about') }}" class="text-white underline hover:text-blue-700">Cari tahu alasannya</a>
     </div>
 </section>
 

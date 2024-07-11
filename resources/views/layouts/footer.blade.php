@@ -20,16 +20,49 @@
         </div>
     </div>
 
-    <div class="grid grid-cols-3 p-20">
+    <div class="grid grid-cols-4 p-20">
         <div>
             <img src="{{ asset('logo/daphone-1.png') }}" class="w-40" alt="">
         </div>
         <div>
-            <h1 class="text-2xl font-semibold">Hubungi Kami</h1>
-            <span class="text-gray-500">Kirim pesan</span>
+            <h1 class="text-lg font-semibold">Hubungi Kami</h1>
+            <span>Kirim pesan</span>
+            <ul class="text-gray-500">
+                <li>
+                    +62 896-1443-2052
+                </li>
+                <li>
+                    Jl. Letjend Ibrahim Adjie No.215
+                </li>
+                <li>
+                    16117
+                </li>
+            </ul>
         </div>
         <div>
-            
+            <h1 class="text-lg font-bold">Policies</h1>
+            <ul>
+                <li>
+                    <a href="#">Terms of Service</a>
+                </li>
+                <li>
+                    <a href="#">Privacy Policy</a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h1 class="text-lg font-bold">Social Media</h1>
+            <ul>
+                <li>
+                    <a href="#">Facebook</a>
+                </li>
+                <li>
+                    <a href="#">Instagram</a>
+                </li>
+                <li>
+                    <a href="#">Tiktok</a>
+                </li>
+            </ul>
         </div>
     </div>
 </footer>
