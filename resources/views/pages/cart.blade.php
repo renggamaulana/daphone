@@ -33,10 +33,13 @@
 
             <div>
                 <h1 class="font-semibold text-3xl">Ringkasan</h1>
-                <div class="border border-grey-800 p-10 my-5 bg-white">
-                    <span>Total Keranjang: 1</span>
-                    <span>Harga : Rp. 3.850.000</span>
+                <div class="border border-grey-800 p-5 my-5 bg-white">
+                    <span class="text-lg">Total Keranjang:</span>
+                    <span class="text-lg font-semibold"> Rp. 3.850.000</span>
+                    <p class="text-xs text-gray-500">Samsung Galaxy S4: Jaminan 30 Hari</p>
                 </div> 
+                <p class="text-sm text-gray-500 mb-3">Kepuasan dijamin atau uang Anda kembali dalam 7 hari.</p>
+                <p class="text-sm text-gray-500">Dengan mengonfirmasi pesanan ini, Anda menerima <a href="" class="underline">Syarat & Ketentuan</a> dan <a href="" class="underline">Kebijakan Privasi</a> kami</p>
             </div>
 
         </div>

@@ -32,10 +32,10 @@
                     +62 896-1443-2052
                 </li>
                 <li>
-                    Jl. Letjend Ibrahim Adjie No.215
+                    Jl. Letjend Ibrahim Adjie No.215, Bogor, Jawa Barat 16117
                 </li>
                 <li>
-                    16117
+                     
                 </li>
             </ul>
         </div>
@@ -43,15 +43,15 @@
             <h1 class="text-lg font-bold">Policies</h1>
             <ul>
                 <li>
-                    <a href="#">Terms of Service</a>
+                    <a href="#" class="hover:underline">Terms of Service</a>
                 </li>
                 <li>
-                    <a href="#">Privacy Policy</a>
+                    <a href="#" class="hover:underline">Privacy Policy</a>
                 </li>
             </ul>
         </div>
         <div>
-            <h1 class="text-lg font-bold">Social Media</h1>
+            <h1 class="text-lg font-bold">Media Sosial</h1>
             <ul>
                 <li>
                     <a href="#">Facebook</a>
