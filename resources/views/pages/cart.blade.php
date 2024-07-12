@@ -3,7 +3,7 @@
 @section('title', 'Cart')
 @section('content')
     <section class="px-20 my-5">
-        <button class="border border-red-600 px-4 py-2 bg-red-500 hover:bg-red-600 text-white">Kembali</button>
+        <a href="{{ route('home') }}" class="border border-red-600 px-4 py-2 bg-red-500 hover:bg-red-600 text-white">Kembali</a>
         <hr class="my-5">
 
         <div class="flex gap-10">

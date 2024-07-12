@@ -13,21 +13,22 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->longText('description')->nullable();
-            $table->decimal('price', 28,2);
-            $table->string('condition');
-            $table->string('category');
-            $table->string('brand');
-            $table->string('model');
-            $table->string('type');
-            $table->string('color');
-            $table->string('storage');
-            $table->string('memory');
-            $table->string('operating_system');
-            $table->string('signal_status');
-            $table->string('image');
-            $table->string('release_date');
+            $table->decimal('price', 28,2)->default(0);
+            $table->string('condition')->nullable();
+            $table->string('category')->nullable();
+            $table->string('brand')->nullable();
+            $table->string('model')->nullable();
+            $table->string('type')->nullable();
+            $table->string('color')->nullable();
+            $table->string('storage')->nullable();
+            $table->string('memory')->nullable();
+            $table->string('operating_system')->nullable();
+            $table->string('signal_status')->nullable();
+            $table->string('image')->nullable();
+            $table->date('release_date')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

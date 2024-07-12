@@ -20,7 +20,7 @@
         </div>
     </div>
 
-    <div class="grid grid-cols-4 p-20">
+    <div class="grid grid-cols-4 gap-20 p-10">
         <div>
             <img src="{{ asset('logo/daphone-1.png') }}" class="w-40" alt="">
         </div>

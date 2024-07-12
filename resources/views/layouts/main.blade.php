@@ -23,9 +23,6 @@
         font-family: var(--ff);
         color: #333333;
     }
-    body {
-        background: #f0f0f0
-    }
 </style>
 <body>
     <div class="flex flex-col min-h-screen">
