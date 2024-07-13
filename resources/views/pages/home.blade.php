@@ -86,8 +86,16 @@
 
     <div class="grid grid-cols-3 gap-4 ">
         @foreach($products as $product)
-            <div class="border p-5">
-               <h1>{{ $product->name }} </h1>
+            <div class="border">
+                <div class="w-full flex justify-center">
+                    <img class="object-cover w-64 h-64 object-center" src="{{ Storage::url($product->image) }}" alt=""> 
+                </div>
+                <div class="p-5">
+                    <h1 class="text-xl font-semibold">{{ $product->name }} </h1>
+                    <p>Kondisi: {{ $product->condition }}</p>
+                    <p class="text-blue-700 font-semibold text-md">Rp {{ number_format($product->price), 2, ',' }}</p>
+                    <span class="bg-gray-200 px-2 py-1">{{ $product->signal_status }}</span>
+                </div>
             </div>
         @endforeach
     </div>
