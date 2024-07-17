@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Cart')
+@section('title', 'Keranjang')
 @section('content')
     <section class="px-20 my-5">
         <a href="{{ route('home') }}" class="border border-red-600 px-4 py-2 bg-red-500 hover:bg-red-600 text-white">Kembali</a>

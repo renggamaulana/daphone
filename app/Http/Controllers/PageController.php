@@ -31,6 +31,11 @@ class PageController extends Controller
         return view('pages.trade-in');
     }
 
+    public function sellPhone()
+    {
+        return view('pages.sell-phone');
+    }
+
     public function about()
     {
         return view('pages.about');
