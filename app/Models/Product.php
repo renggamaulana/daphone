@@ -28,4 +28,9 @@ class Product extends Model
         'release_date'
     ];
 
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
 }

@@ -168,36 +168,39 @@
 
 {{-- Testimoni --}}
 <section class="p-20">
-    <div class="flex gap-5">
-        <div class="w-full h-[300px] border p-10 flex flex-col gap-2">
-            <div class="flex flex-col gap-1 justify-center items-center">
-                <h2 class="text-3xl font-semibold">Hanif Dinar Mufida</h1>
-                <div class="flex items-center justify-center">
-                    @for($i = 0; $i < 5; $i ++)
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 text-yellow-400">
-                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
-                        </svg>      
-                    @endfor            
+    <h1 class="text-3xl font-semibold text-center mb-5">Kata Mereka</h1>
+    <div class="">
+        <div class="flex gap-5">
+            <div class="w-full border p-10 flex flex-col gap-2">
+                <div class="flex flex-col gap-1 justify-center items-center">
+                    <h2 class="text-3xl font-semibold">Hanif Dinar Mufida</h1>
+                    <div class="flex items-center justify-center">
+                        @for($i = 0; $i < 5; $i ++)
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 text-yellow-400">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>      
+                        @endfor            
+                    </div>
+                </div>
+                <div>
+                    <p class="leading-8 text-md text-gray-500">high quality product and service! if you're looking for secondhand smartphones, jagofon is a right place for you. would definitely recommend to my friends and family 👍🏼👍🏼👍🏼</p>
                 </div>
             </div>
-            <div>
-                <p class="leading-8 text-md text-gray-500">high quality product and service! if you're looking for secondhand smartphones, jagofon is a right place for you. would definitely recommend to my friends and family 👍🏼👍🏼👍🏼</p>
-            </div>
-        </div>
-
-        <div class="w-full h-[300px] border p-10 flex flex-col gap-2">
-            <div class="flex flex-col gap-1 justify-center items-center">
-                <h2 class="text-3xl font-semibold">Billy Marvin</h2>
-                <div class="flex items-center justify-center">
-                    @for($i = 0; $i < 5; $i ++)
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 text-yellow-400">
-                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
-                        </svg>      
-                    @endfor            
+    
+            <div class="w-full border p-10 flex flex-col gap-2">
+                <div class="flex flex-col gap-1 justify-center items-center">
+                    <h2 class="text-3xl font-semibold">Billy Marvin</h2>
+                    <div class="flex items-center justify-center">
+                        @for($i = 0; $i < 5; $i ++)
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 text-yellow-400">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>      
+                        @endfor            
+                    </div>
                 </div>
-            </div>
-            <div>
-                <p class="leading-8 text-md text-gray-500">Barang sesuai harapan, Cs ramah dan mau menjelaskan, Beli pagi sore sampai, Mungkin akan beli kembali buat yg ke2,ke3 Recomen bgt beli disini....</p>
+                <div>
+                    <p class="leading-8 text-md text-gray-500">Barang sesuai harapan, Cs ramah dan mau menjelaskan, Beli pagi sore sampai, Mungkin akan beli kembali buat yg ke2,ke3 Recomen bgt beli disini....</p>
+                </div>
             </div>
         </div>
     </div>
