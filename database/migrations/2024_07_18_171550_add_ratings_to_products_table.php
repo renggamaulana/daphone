@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
             $table->decimal('rating', 3, 2)->default(0);
-            $table->integer('rating_count')->deault(0); 
+            $table->integer('rating_count')->default(0); 
         });
     }
 
