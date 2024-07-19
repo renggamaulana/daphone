@@ -16,11 +16,6 @@ class PageController extends Controller
         ]);
     }
 
-    public function allProducts()
-    {
-        return view('pages.all-products');
-    }
-
     public function flashSale()
     {
         return view('pages.flash-sale');

@@ -46,16 +46,15 @@ class AccountController extends Controller
 
         #Match The Old Password
         if(!Hash::check($request->old_password, auth()->user()->password)){
-            return back()->with("error", "Old Password Doesn't match!");
+            return back()->with("error", "Kata sandi lama tidak sesuai!");
         }
-
 
         #Update the new Password
         User::whereId(auth()->user()->id)->update([
             'password' => Hash::make($request->new_password)
         ]);
 
-        return back()->with("success", "Password changed successfully!");
+        return back()->with("success", "Kata sandi berhasil diubah!");
     }
 
     public function orders() {

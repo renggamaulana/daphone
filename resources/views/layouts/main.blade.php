@@ -24,7 +24,7 @@
         color: #333333;
     }
 </style>
-<body>
+<body class="bg-gray-100">
     <div class="flex flex-col min-h-screen">
         @include('layouts.header')
 

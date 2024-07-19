@@ -55,7 +55,7 @@
         </a> 
     </div>
     <ul class="flex justify-between text-white">
-        <li class="mx-2"><a class="font-semibold hover:text-teal-400" href="{{ route('all-products') }}">Semua Produk</a></li>
+        <li class="mx-2"><a class="font-semibold hover:text-teal-400" href="{{ route('products') }}">Semua Produk</a></li>
         <li class="mx-2"><a class="font-semibold hover:text-teal-400" href="{{ route('flash-sale') }}">Flash Sale</a></li>
         <li class="mx-2"><a class="font-semibold hover:text-teal-400" href="{{ route('trade-in') }}">Tukar Tambah</a></li>
         <li class="mx-2"><a class="font-semibold hover:text-teal-400" href="{{ route('sell-phone') }}">Jual</a></li>

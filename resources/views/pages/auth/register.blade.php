@@ -5,7 +5,7 @@
 @section('content')
 
     <section class="flex justify-center p-10">
-        <div class="border shadow p-5 w-[500px] rounded">
+        <div class="border shadow p-5 w-[500px] rounded bg-white">
             <h1 class="text-2xl font-bold mb-5">Daftar</h1>
 
              <!-- Validation Errors -->
@@ -42,12 +42,12 @@
                     <input type="password" name="password_confirmation" class="px-3 py-2 w-full border rounded">
                 </div>
                 <button type="submit" class="bg-teal-500 hover:bg-teal-600 text-white text-center text-sm w-full px-3 py-2 mt-2">Daftar</button>
-                <div class="flex gap-2 items-center">
+                {{-- <div class="flex gap-2 items-center">
                     <div class="h-[1px] w-full bg-gray-200"></div>
                     <span>atau</span>
                     <div class="h-[1px] w-full bg-gray-200"></div>
                 </div>
-                <button type="submit" class="bg-red-100 hover:bg-red-200 text-red-600 text-center text-sm w-full px-3 py-2 mt-2">Masuk dengan Google</button>
+                <button type="submit" class="bg-red-100 hover:bg-red-200 text-red-600 text-center text-sm w-full px-3 py-2 mt-2">Masuk dengan Google</button> --}}
             </form>
             <p class="mt-2 text-center text-gray-500">Punya akun? <a href="{{ route('login') }}" class="underline text-gray-600">Masuk Disini</a></p>
         </div>

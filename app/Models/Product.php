@@ -25,12 +25,27 @@ class Product extends Model
         'operating_system',
         'signal_status',
         'image',
-        'release_date'
+        'release_date',
+        'rating',
+        'rating_count'
     ];
 
     public function orderItems()
     {
         return $this->hasMany(OrderItem::class);
+    }
+
+    public function discounts()
+    {
+        return $this->hasMany(Discount::class);
+    }
+
+    public function currentDiscount()
+    {
+        return $this->discounts()
+            ->where('start_date', '<=', now())
+            ->where('end_date', '>=', now())
+            ->first();
     }
 
 }

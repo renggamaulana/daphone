@@ -5,63 +5,9 @@
 @section('content')
 <section class="p-20">
 
-    {{-- <div class="h-[200px]">
+    <div class="h-[200px]">
         <img class="h-[300px] w-full object-cover" src="{{ asset('images/phone-banner.jpg') }}" alt="">
-    </div> --}}
-
-
-
-<div id="default-carousel" class="relative w-full" data-carousel="slide">
-    <!-- Carousel wrapper -->
-    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-         <!-- Item 1 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-1.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 2 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src={{ asset('images/phone-banner.jpg') }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 3 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-3.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 4 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-4.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 5 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-5.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
     </div>
-    <!-- Slider indicators -->
-    <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
-    </div>
-    <!-- Slider controls -->
-    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-            </svg>
-            <span class="sr-only">Previous</span>
-        </span>
-    </button>
-    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-            </svg>
-            <span class="sr-only">Next</span>
-        </span>
-    </button>
-</div>
-
 
 </section>
 
@@ -69,24 +15,27 @@
     <h1 class="text-3xl font-bold mb-5">Flash Sale!</h1>
     
     <div class="grid grid-cols-4 gap-4">
-        @for($i = 0; $i < 4; $i++)
-            <div class="border">
-                <img src="{{ asset('images/product1.jpg') }}" alt=""> 
+        {{-- @for($i = 0; $i < 4; $i++) --}}
+        @foreach($products as $product)
+            <div class="border bg-white rounded">
+                <div class="w-full flex justify-center">
+                    <img class="object-cover w-64 h-64 object-center" src="{{ Storage::url($product->image) }}" alt=""> 
+                </div>
                 <div class="description p-5">
-                    <h1 class="font-bold text-xl">Samsung Galaxy S4</h1>
-                    <p>Startting from IDR Rp.4000.000</p>
+                    <h1 class="font-bold text-xl">{{ $product->name }}</h1>
+                    <p class="text-sm">Startting from IDR <span class="text-md font-semibold"> Rp {{ number_format($product->price, 2, ',', '.') }}</span></p>
                 </div>
             </div>
-        @endfor
+        @endforeach
     </div>
 </section>
 
 <section class="p-20">
     <h1 class="text-3xl font-bold mb-5">Our Best Seller</h1>
 
-    <div class="grid grid-cols-3 gap-4 ">
+    <div class="grid grid-cols-3 gap-4">
         @foreach($products as $product)
-            <div class="border">
+            <div class="border bg-white rounded">
                 <div class="w-full flex justify-center">
                     <img class="object-cover w-64 h-64 object-center" src="{{ Storage::url($product->image) }}" alt=""> 
                 </div>
@@ -103,14 +52,14 @@
 </section>
 
 <section class="p-20">
-    <div class="border p-10 flex gap-10 justify-between">
-        <div class="w-[45%]">
+    <div class="border p-10 flex bg-white rounded gap-10 justify-between">
+        <div class="w-2/5">
             <h1 class="text-3xl">Sedikit tentang Daphone</h1>
             <p class="mt-3" class="leading-8 mt-4">Selamat Datang Di Daphone! Kami merupakan marketplace pertama di Indonesia yang berspesialisasi dalam smartphone bekas.</p>
             <p class="mt-3" >Misi kami adalah membangun kembali kepercayaan pada pasar smartphone bekas melalui ponsel berkualitas tinggi tetapi dengan harga yang terjangkau. Kami menjalankan metodologi seleksi dan pengujian yang sangat cermat untuk memberikan produk yang terbaik bagimu.</p>
             <p class="mt-3" >Dengan membeli dari kami, kamu memberi nyawa kedua bagi sebuah perangkat, sehingga kamu turut membantu mengurangi limbah elektronik dan melindungi lingkungan.</p>    
         </div>
-        <div class="grid grid-cols-2 w-[55%] gap-4">
+        <div class="w-3/5 grid grid-cols-2 gap-4">
             <div class="flex flex-col gap-1 text-center items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-12">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6.633 10.25c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75a.75.75 0 0 1 .75-.75 2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282m0 0h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23H5.904m10.598-9.75H14.25M5.904 18.5c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 0 1-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 9.953 4.167 9.5 5 9.5h1.053c.472 0 .745.556.5.96a8.958 8.958 0 0 0-1.302 4.665c0 1.194.232 2.333.654 3.375Z" />
@@ -171,7 +120,7 @@
     <h1 class="text-3xl font-semibold text-center mb-5">Kata Mereka</h1>
     <div class="">
         <div class="flex gap-5">
-            <div class="w-full border p-10 flex flex-col gap-2">
+            <div class="w-full bg-white rounded border p-10 flex flex-col gap-2">
                 <div class="flex flex-col gap-1 justify-center items-center">
                     <h2 class="text-3xl font-semibold">Hanif Dinar Mufida</h1>
                     <div class="flex items-center justify-center">
@@ -187,7 +136,7 @@
                 </div>
             </div>
     
-            <div class="w-full border p-10 flex flex-col gap-2">
+            <div class="w-full bg-white rounded border p-10 flex flex-col gap-2">
                 <div class="flex flex-col gap-1 justify-center items-center">
                     <h2 class="text-3xl font-semibold">Billy Marvin</h2>
                     <div class="flex items-center justify-center">
