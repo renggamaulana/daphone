@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SellPhoneController;
 use App\Http\Controllers\TradeInController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +24,11 @@ Route::prefix('trade-in')->group(function() {
     Route::get('confirmed', [TradeInController::class, 'confirmed'])->name('trade-in.confirmed');
 });
 
-Route::get('/sell-phone', [PageController::class ,'sellPhone'])->name('sell-phone');
+Route::prefix('sell-phone')->group(function() {
+    Route::get('/', [SellPhoneController::class, 'index'])->name('sell-phone');
+    Route::get('confirm', [SellPhoneController::class, 'confirm'])->name('sell-phone.confirm');
+    Route::get('confirmed', [SellPhoneController::class, 'confirmed'])->name('sell-phone.confirmed');
+});
 Route::get('/cart', [PageController::class ,'cart'])->name('cart');
 
 Route::get('login', [AuthController::class, 'loginView'])->name('login');
@@ -46,6 +51,7 @@ Route::middleware('auth')->group(function() {
 });
 
 Route::prefix('checkout')->group(function(){
+    Route::get('account', [CheckoutController::class, 'account'])->name('checkout.account')->middleware('checkout');
     Route::get('cart', [CheckoutController::class, 'cart'])->name('checkout.cart');
     Route::post('{product}/add-to-cart', [CheckoutController::class, 'addToCart'])->name('checkout.add-to-cart');
     Route::delete('cart/{cart}', [CheckoutController::class, 'deleteCart'])->name('checkout.delete-cart');

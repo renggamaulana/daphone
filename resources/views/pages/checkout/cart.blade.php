@@ -68,7 +68,7 @@
                         <span class="text-lg">Total:</span>
                         <span class="text-lg font-semibold" id="totalPrice"> Rp. 3.850.000</span>
                     </div>
-                    <a href="{{ route('checkout.shipping') }}" class="px-2 py-1 bg-purple-500 hover:bg-purple-600 text-white w-full rounded mt-2 block text-center">Checkout</a>
+                    <a href="{{ route('checkout.account') }}" class="px-2 py-1 bg-purple-500 hover:bg-purple-600 text-white w-full rounded mt-2 block text-center">Checkout</a>
                     {{-- <p class="text-xs text-gray-500">Samsung Galaxy S4: Jaminan 30 Hari</p> --}}
                 </div> 
                 <p class="text-sm text-gray-500 mb-3">Kepuasan dijamin atau uang Anda kembali dalam 7 hari.</p>

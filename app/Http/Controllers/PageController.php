@@ -21,16 +21,6 @@ class PageController extends Controller
         return view('pages.flash-sale');
     }
 
-    public function tradeIn()
-    {
-        return view('pages.trade-in');
-    }
-
-    public function sellPhone()
-    {
-        return view('pages.sell-phone');
-    }
-
     public function about()
     {
         return view('pages.about');

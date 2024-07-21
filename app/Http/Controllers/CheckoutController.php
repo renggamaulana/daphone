@@ -47,9 +47,15 @@ class CheckoutController extends Controller
         return redirect()->route('cart.index')->with('error', 'Tidak dapat menghapus barang');
     }
 
+    public function account()
+    {
+        return view('pages.checkout.account');
+    }
+
     public function shipping()
     {
         return view('pages.checkout.shipping');
     }
+    
 
 }

@@ -93,6 +93,12 @@ class ProductResource extends Resource
                                     'ios' => 'iOS',
                                 ])
                                 ->required(),
+                Forms\Components\Select::make('guarantee')
+                ->options([
+                    'Resmi Indonesia' => 'Resmi Indonesia',
+                    'Internasional' => 'Internasional',
+                ])
+                ->required(),
                 Forms\Components\Select::make('signal_status')
                                 ->options([
                                     'IMEI Verified' => 'IMEI Verified',
@@ -120,6 +126,7 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('model')->searchable(),
                 Tables\Columns\TextColumn::make('storage')->searchable(),
                 Tables\Columns\TextColumn::make('memory')->searchable(),
+                Tables\Columns\TextColumn::make('guarantee')->searchable(),
             ])
             ->filters([
                 //

@@ -11,8 +11,8 @@
 
 </section>
 
-<section class="p-20">
-    <h1 class="text-3xl font-bold mb-5">Flash Sale!</h1>
+<section class="px-6 py-8">
+    <h1 class="text-4xl font-bold mb-5 font-serif">Flash Sale!</h1>
     
     <div class="grid grid-cols-4 gap-4">
         {{-- @for($i = 0; $i < 4; $i++) --}}
@@ -23,18 +23,19 @@
                 </div>
                 <div class="description p-5">
                     <h1 class="font-bold text-xl">{{ $product->name }}</h1>
-                    <p class="text-sm">Startting from IDR <span class="text-md font-semibold"> Rp {{ number_format($product->price, 2, ',', '.') }}</span></p>
+                    <p class="text-sm">Mulai dari <span class="text-md font-semibold"> Rp {{ number_format($product->price, 2, ',', '.') }}</span></p>
                 </div>
             </div>
         @endforeach
     </div>
 </section>
 
-<section class="p-20">
-    <h1 class="text-3xl font-bold mb-5">Our Best Seller</h1>
+<section class="px-6 pb-8">
+    <h1 class="text-4xl font-bold mb-5 font-serif">Our Best Seller</h1>
 
     <div class="grid grid-cols-3 gap-4">
         @foreach($products as $product)
+        <a href="{{ route('products.show', $product->id) }}">
             <div class="border bg-white rounded">
                 <div class="w-full flex justify-center">
                     <img class="object-cover w-64 h-64 object-center" src="{{ Storage::url($product->image) }}" alt=""> 
@@ -43,18 +44,22 @@
                     <h1 class="text-xl font-semibold">{{ $product->name }} </h1>
                     <p>Kondisi: {{ $product->condition }}</p>
                     <p class="text-blue-700 font-semibold text-md">Rp {{ number_format($product->price), 2, ',' }}</p>
-                    <span class="bg-gray-200 px-2 py-1">{{ $product->signal_status }}</span>
+                    <div class="flex gap-2 mt-2">
+                        <span class="bg-gray-100 px-2 py-1 rounded">{{ $product->guarantee }}</span>
+                        <span class="bg-gray-100 px-2 py-1 rounded">{{ $product->signal_status }}</span>
+                    </div>
                 </div>
             </div>
+        </a>
         @endforeach
     </div>
 
 </section>
 
-<section class="p-20">
+<section class="px-6 pb-8">
     <div class="border p-10 flex bg-white rounded gap-10 justify-between">
         <div class="w-2/5">
-            <h1 class="text-3xl">Sedikit tentang Daphone</h1>
+            <h1 class="text-4xl font-serif font-semibold">Sedikit tentang Daphone</h1>
             <p class="mt-3" class="leading-8 mt-4">Selamat Datang Di Daphone! Kami merupakan marketplace pertama di Indonesia yang berspesialisasi dalam smartphone bekas.</p>
             <p class="mt-3" >Misi kami adalah membangun kembali kepercayaan pada pasar smartphone bekas melalui ponsel berkualitas tinggi tetapi dengan harga yang terjangkau. Kami menjalankan metodologi seleksi dan pengujian yang sangat cermat untuk memberikan produk yang terbaik bagimu.</p>
             <p class="mt-3" >Dengan membeli dari kami, kamu memberi nyawa kedua bagi sebuah perangkat, sehingga kamu turut membantu mengurangi limbah elektronik dan melindungi lingkungan.</p>    
@@ -116,7 +121,7 @@
 </section>
 
 {{-- Testimoni --}}
-<section class="p-20">
+<section class="px-6 pb-8">
     <h1 class="text-3xl font-semibold text-center mb-5">Kata Mereka</h1>
     <div class="">
         <div class="flex gap-5">
@@ -157,7 +162,7 @@
 
 
 {{-- FaQ --}}
-<section class="p-20">
+<section class="px-6 pb-8">
     <h1 class="text-4xl">Pertanyaan Sering Diajukan</h1>
     <ul class="accordion">
         <li>

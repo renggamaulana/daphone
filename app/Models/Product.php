@@ -24,6 +24,7 @@ class Product extends Model
         'memory',
         'operating_system',
         'signal_status',
+        'guarantee',
         'image',
         'release_date',
         'rating',
