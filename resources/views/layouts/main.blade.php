@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Daphone | @yield('title')</title>
 
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    @
 </head>
 <style>
     :root {
@@ -24,7 +25,7 @@
         color: #333333;
     }
 </style>
-<body class="bg-gray-100">
+<body class="bg-gray-50">
     <div class="flex flex-col min-h-screen">
         @include('layouts.header')
 

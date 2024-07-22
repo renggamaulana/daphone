@@ -56,6 +56,7 @@ Route::prefix('checkout')->group(function(){
     Route::post('{product}/add-to-cart', [CheckoutController::class, 'addToCart'])->name('checkout.add-to-cart');
     Route::delete('cart/{cart}', [CheckoutController::class, 'deleteCart'])->name('checkout.delete-cart');
     Route::get('shipping', [CheckoutController::class, 'shipping'])->name('checkout.shipping');
+    Route::get('payment', [CheckoutController::class, 'payment'])->name('checkout.payment');
 });
 
 Route::prefix('products')->group(function(){
@@ -65,4 +66,7 @@ Route::prefix('products')->group(function(){
 Route::get('register', [AuthController::class, 'registerView'])->name('register');
 Route::post('register', [AuthController::class, 'register'])->name('register');
 
+Route::get('foo', function() {
+    echo 'running!';
+})->middleware('');
 

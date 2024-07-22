@@ -6,11 +6,13 @@
     <section class="px-6 pb-6 mt-6">
         <div class="border rounded-lg bg-white w-full p-10">
             <div class="flex gap-5">
-                <div class="w-2/5">
-                    <img class="rounded" src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}">
-                    <div class="flex gap-3">
-                        <span>{{ $product->condition }}</span>
-                        <span>{{ $product->signal_status }}</span>
+                <div class="w-2/5 relative grow-0 basis-full md:basis-2/5">
+                    <div class="relative">
+                        <img class="rounded w-full" src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}">
+                        <div class="flex gap-3 relative">
+                            <span>{{ $product->guarantee }}</span>
+                            <span>{{ $product->signal_status }}</span>
+                        </div>
                     </div>
                 </div>
                 <div class="w-3/5 flex flex-col gap-2">
@@ -19,13 +21,13 @@
                         <span class="text-xl text-gray-500 font-semibold">{{ $product->storage }} - {{ $product->color }}</span>
                     </div>
                     <!-- Tampilkan peringkat saat ini -->
-                    <div class="mb-2">
+                    {{-- <div class="mb-2">
                         @if ($product->rating_count > 0)
                             Rated: {{ $product->rating }}/5 ({{ $product->rating_count }} ratings)
                         @else
-                            Not rated yet.
+                            Belum ada ulasan
                         @endif
-                    </div>
+                    </div> --}}
                     <div class="flex">
                         <h3 class="text-3xl font-semibold text-gray-600">Rp {{ number_format($product->price, 2, ',', '.') }}</h3>
                         @if($product->discount)
@@ -273,8 +275,8 @@
         </div>
     </section>
 
-    <section class="px-6 pb-6">
+    {{-- <section class="px-6 pb-6">
         <h1 class="font-semibold text-3xl font-serif">Produk Mirip</h1>
-    </section>
+    </section> --}}
 
 @endsection

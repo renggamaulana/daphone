@@ -56,6 +56,11 @@ class CheckoutController extends Controller
     {
         return view('pages.checkout.shipping');
     }
+
+    public function payment()
+    {
+        return view('pages.checkout.payment');
+    }
     
 
 }
