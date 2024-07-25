@@ -3,11 +3,22 @@
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SellPhoneController;
 use App\Http\Controllers\TradeInController;
 use Illuminate\Support\Facades\Route;
+
+
+
+Route::get('login', [AuthController::class, 'loginView'])->name('login');
+Route::post('login', [AuthController::class, 'login'])->name('login');
+Route::get('register', [AuthController::class, 'registerView'])->name('register');
+Route::post('register', [AuthController::class, 'register'])->name('register');
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
 Route::get('/', [PageController::class ,'home'])->name('home');
 Route::get('/about', [PageController::class, 'about'])->name('about');
@@ -31,10 +42,6 @@ Route::prefix('sell-phone')->group(function() {
 });
 Route::get('/cart', [PageController::class ,'cart'])->name('cart');
 
-Route::get('login', [AuthController::class, 'loginView'])->name('login');
-Route::post('login', [AuthController::class, 'login'])->name('login');
-Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-
 Route::middleware('auth')->group(function() {
     Route::prefix('account')->group(function() {
         Route::prefix('profile')->group(function() {
@@ -50,23 +57,23 @@ Route::middleware('auth')->group(function() {
     });
 });
 
+
+
 Route::prefix('checkout')->group(function(){
-    Route::get('account', [CheckoutController::class, 'account'])->name('checkout.account')->middleware('checkout');
+    Route::get('guest', [CheckoutController::class, 'guest'])->name('checkout.guest');
+    Route::get('account', [CheckoutController::class, 'account'])->name('checkout.account');
+    Route::post('store-cart-data', [CheckoutController::class, 'storeCartData'])->name('checkout.storeCartData');
     Route::get('cart', [CheckoutController::class, 'cart'])->name('checkout.cart');
     Route::post('{product}/add-to-cart', [CheckoutController::class, 'addToCart'])->name('checkout.add-to-cart');
     Route::delete('cart/{cart}', [CheckoutController::class, 'deleteCart'])->name('checkout.delete-cart');
     Route::get('shipping', [CheckoutController::class, 'shipping'])->name('checkout.shipping');
     Route::get('payment', [CheckoutController::class, 'payment'])->name('checkout.payment');
+    Route::get('confirm-payment', [CheckoutController::class, 'confirmPayment'])->name('checkout.confirm-payment');
 });
+Route::post('submit-payment', [CheckoutController::class, 'submitPayment']);
 
 Route::prefix('products')->group(function(){
     Route::get('/', [ProductController::class, 'index'])->name('products');
 });
 
-Route::get('register', [AuthController::class, 'registerView'])->name('register');
-Route::post('register', [AuthController::class, 'register'])->name('register');
-
-Route::get('foo', function() {
-    echo 'running!';
-})->middleware('');
 

@@ -12,8 +12,16 @@ class CheckoutController extends Controller
     public function cart()
     {
         $cartItems = Cart::where('user_id', Auth::id())->with('product')->get();
+        $totalAmount = 0;
 
-        return view('pages.checkout.cart', compact('cartItems'));
+        foreach($cartItems as $item) {
+            $totalAmount += $item->product->price;
+        }
+
+        return view('pages.checkout.cart', [
+            'cartItems' => $cartItems,
+            'totalAmount' => $totalAmount
+        ]);
     }
 
     public function addToCart(Product $product)
@@ -47,9 +55,29 @@ class CheckoutController extends Controller
         return redirect()->route('cart.index')->with('error', 'Tidak dapat menghapus barang');
     }
 
-    public function account()
+    public function guest()
     {
-        return view('pages.checkout.account');
+        return view('pages.checkout.guest');
+    }
+
+    public function storeCartData(Request $request)
+    {
+        // Simpan data keranjang ke session
+        $request->session()->put('cartData', $request->cartData);
+
+        return response()->json(['success' => true]);
+    }
+
+    public function account(Request $request)
+    {
+        $cartData = [];
+
+        if (Auth::check()) {
+            // Jika sudah login, arahkan ke halaman shipping
+            return redirect('/checkout/shipping')->with('cartData', $cartData);
+        }
+
+        return view('pages.checkout.account', ['cartData' => $cartData]);
     }
 
     public function shipping()
@@ -60,6 +88,18 @@ class CheckoutController extends Controller
     public function payment()
     {
         return view('pages.checkout.payment');
+    }
+
+    public function confirmPayment()
+    {
+        return view('pages.checkout.confirm-payment');
+    }
+
+    public function submitPayment(Request $request)
+    {
+        return response()->json([
+            'data' => $request->all()
+        ]);
     }
     
 

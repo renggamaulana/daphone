@@ -13,7 +13,11 @@ class TradeInController extends Controller
 
     public function confirm(Request $request)
     {
-       return view('pages.trade-in.confirm');
+        $tradeInData = $request->all();
+
+       return view('pages.trade-in.confirm', [
+        'tradeInData' => $tradeInData
+       ]);
     }
 
     public function confirmed(Request $request)

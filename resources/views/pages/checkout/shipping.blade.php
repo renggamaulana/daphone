@@ -5,7 +5,7 @@
 @section('content')
     <div class="p-10 flex gap-4">
         <main class="w-4/6 border rounded-lg bg-white p-10">
-            <h1>Alamat Pengiriman</h1>
+            <h1 class="text-2xl font-semibold mb-5">Alamat Pengiriman</h1>
             <div class="flex flex-col gap-2">
                 <div class="grid grid-cols-2 gap-3">
                     <div class="flex flex-col gap-2">
@@ -40,8 +40,7 @@
                     <div class="py-3 first:pt-0">
                         <div class="flex items-start">
                             <div class="size-12">
-                                <img src="" alt="img">
-                                {{-- <img src="{{ asset($product->image) }}" alt="{{ $product->name }}"> --}}
+                                <img src="{{ asset('images/product1.jpg') }}" alt="">
                             </div>
                             <div class="pl-1 text-sm">
                                 <p class="font-medium">iPhone 11 - 64 GB - White</p>

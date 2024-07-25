@@ -5,32 +5,14 @@
 @section('content')
 <section class="p-20">
 
-    <div class="h-[200px]">
+    <div>
         <img class="h-[300px] w-full object-cover" src="{{ asset('images/phone-banner.jpg') }}" alt="">
     </div>
 
 </section>
 
-<section class="px-6 py-8">
-    <h1 class="text-4xl font-bold mb-5 font-serif">Flash Sale!</h1>
-    
-    <div class="grid grid-cols-4 gap-4">
-        {{-- @for($i = 0; $i < 4; $i++) --}}
-        @foreach($products as $product)
-            <div class="border bg-white rounded">
-                <div class="w-full flex justify-center">
-                    <img class="object-cover w-64 h-64 object-center" src="{{ Storage::url($product->image) }}" alt=""> 
-                </div>
-                <div class="description p-5">
-                    <h1 class="font-bold text-xl">{{ $product->name }}</h1>
-                    <p class="text-sm">Mulai dari <span class="text-md font-semibold"> Rp {{ number_format($product->price, 2, ',', '.') }}</span></p>
-                </div>
-            </div>
-        @endforeach
-    </div>
-</section>
 
-<section class="px-6 pb-8">
+<section class="px-6 py-8">
     <h1 class="text-4xl font-bold mb-5 font-serif">Our Best Seller</h1>
 
     <div class="grid grid-cols-3 gap-4">
