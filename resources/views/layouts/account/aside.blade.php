@@ -1,4 +1,4 @@
-<aside class="border p-8 mt-5 rounded shadow bg-white">
+<aside class="border p-8 mt-5 rounded-lg shadow bg-white">
     <nav>
         <ul class="flex flex-col gap-2">
             <li class="w-full">

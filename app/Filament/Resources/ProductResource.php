@@ -107,7 +107,7 @@ class ProductResource extends Resource
                                 ->required(),
                 Forms\Components\FileUpload::make('image')
                                 ->image()
-                                ->directory('')
+                                ->directory('uploads/images/products')
                                 ->required(),
                 Forms\Components\DatePicker::make('release_date')
                                 ->required(),

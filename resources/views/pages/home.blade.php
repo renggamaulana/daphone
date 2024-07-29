@@ -20,7 +20,7 @@
         <a href="{{ route('products.show', $product->id) }}">
             <div class="border bg-white rounded">
                 <div class="w-full flex justify-center">
-                    <img class="object-cover w-64 h-64 object-center" src="{{ Storage::url($product->image) }}" alt=""> 
+                    <img class="object-cover w-64 h-64 object-center" src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}"> 
                 </div>
                 <div class="p-5">
                     <h1 class="text-xl font-semibold">{{ $product->name }} </h1>
