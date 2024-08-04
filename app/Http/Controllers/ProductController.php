@@ -16,10 +16,9 @@ class ProductController extends Controller
         ]);
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $product = Product::findOrFail($id);
-
+        $product = Product::where('slug', $slug)->with('images')->first();
         return view('pages.products.show', [
             'product' => $product
         ]);

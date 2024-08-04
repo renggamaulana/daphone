@@ -3,12 +3,39 @@
 @section('title', 'Home')
 
 @section('content')
-<section class="p-20">
-
-    <div>
+<section class="p-10">
+    {{-- <div>
         <img class="h-[300px] w-full object-cover" src="{{ asset('images/phone-banner.jpg') }}" alt="">
-    </div>
+    </div> --}}
 
+    <div class="slideshow-container">
+
+        <div class="my-slides fade">
+          <img src="{{ asset('images/banners/banner-1.jpg') }}" class="h-[200px] md:h-[300px] w-full object-cover">
+          <div class="text-gray-200 text-sm tracking-wide px-3 py-2 absolute bottom-2 w-full text-center">Dapatkan Handphone Bekas Berkualitas dengan Harga Terjangkau! 📱✨ Temukan Pilihan Terbaik untuk Anda Hari Ini!</div>
+        </div>
+        
+        <div class="my-slides fade">
+          <img src="{{ asset('images/banners/banner-2.jpg') }}" class="h-[200px] md:h-[300px] w-full object-cover">
+          <div class="text-gray-200 text-sm tracking-wide px-3 py-2 absolute bottom-2 w-full text-center">Upgrade Gadget Anda Tanpa Menguras Kantong! 💰📲 Handphone Bekas Berkualitas, Harga Terbaik, Cek Sekarang!</div>
+        </div>
+        
+        <div class="my-slides fade">
+          <img src="{{ asset('images/banners/banner-3.jpg') }}" class="h-[200px] md:h-[300px] w-full object-cover">
+          <div class="text-gray-200 text-sm tracking-wide px-3 py-2 absolute bottom-2 w-full text-center">Jual atau Beli Handphone Bekas Mudah dan Aman! 🔄📞 Temukan Penawaran Terbaik dan Nikmati Gadget Impian Anda!</div>
+        </div>
+        
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+        
+        </div>
+        <br>
+        
+        <div style="text-align:center">
+          <span class="dot" onclick="currentSlide(1)"></span> 
+          <span class="dot" onclick="currentSlide(2)"></span> 
+          <span class="dot" onclick="currentSlide(3)"></span> 
+        </div>
 </section>
 
 
@@ -17,8 +44,8 @@
 
     <div class="grid grid-cols-3 gap-4">
         @foreach($products as $product)
-        <a href="{{ route('products.show', $product->id) }}">
-            <div class="border bg-white rounded">
+        <a href="{{ route('products.show', ['slug' => $product->slug]) }}">
+            <div class="border bg-white rounded-lg">
                 <div class="w-full flex justify-center">
                     <img class="object-cover w-64 h-64 object-center" src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}"> 
                 </div>
@@ -119,7 +146,7 @@
                     </div>
                 </div>
                 <div>
-                    <p class="leading-8 text-md text-gray-500">high quality product and service! if you're looking for secondhand smartphones, jagofon is a right place for you. would definitely recommend to my friends and family 👍🏼👍🏼👍🏼</p>
+                    <p class="leading-8 text-md text-gray-500">high quality product and service! if you're looking for secondhand smartphones, daphone is a right place for you. would definitely recommend to my friends and family 👍🏼👍🏼👍🏼</p>
                 </div>
             </div>
     
@@ -185,6 +212,100 @@
         body {
             background: rgba(212, 212, 212, 0.133)
         }
+
+        .my-slides {
+            display: none
+        }
+        img {
+            vertical-align: middle;
+        }
+
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+
+        /* Next & previous buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        /* Caption text */
+        .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Number text (1/3 etc) */
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+
+        /* The dots/bullets/indicators */
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+
+        /* Fading animation */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
+
+        /* On smaller screens, decrease text size */
+        @media only screen and (max-width: 300px) {
+            .prev, .next,.text {font-size: 11px}
+        }
+
         .accordion {
             width: 100%;
         }
@@ -239,4 +360,37 @@
         }
 
     </style>
+@endsection
+
+
+@section('script')
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("my-slides");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}    
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+    }
+</script>
+
 @endsection

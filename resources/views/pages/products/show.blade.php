@@ -1,5 +1,6 @@
 @extends('layouts.main')
 
+@section('title', 'Product Detail')
 
 @section('content')
 
@@ -7,13 +8,31 @@
         <div class="border rounded-lg bg-white w-full p-10">
             <div class="flex gap-5">
                 <div class="w-2/5 relative grow-0 basis-full md:basis-2/5">
-                    <div class="relative">
-                        <img class="rounded w-full" src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}">
+                    @if(count($product->images) > 0)
+                        <div class="relative max-w-[300px] m-auto">
+                            @foreach($product->images as $productImage)
+                                <div class="my-slides fade">
+                                    <img class="max-h-[300px] mx-auto object-cover"" src="{{ Storage::url($productImage->image_path) }}" alt="{{ $product->name }}">
+                                    <div class="flex gap-3 relative justify-center mt-1">
+                                        <span class="bg-gray-200 py-1 px-3 rounded-lg">{{ $product->guarantee }}</span>
+                                        <span class="bg-gray-200 py-1 px-3 rounded-lg">{{ $product->signal_status }}</span>
+                                    </div>
+                                </div>
+                            @endforeach
+                            <a class="prev" onclick="plusSlides(-1)">❮</a>
+                            <a class="next" onclick="plusSlides(1)">❯</a>
+                        </div>
+                        <div class="text-center mt-2">
+                            <span class="dot" onclick="currentSlide(1)"></span> 
+                            <span class="dot" onclick="currentSlide(2)"></span> 
+                        </div>
+                    @else
+                        <img class="max-h-[300px] mx-auto object-cover"" src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}">
                         <div class="flex gap-3 relative">
                             <span>{{ $product->guarantee }}</span>
                             <span>{{ $product->signal_status }}</span>
                         </div>
-                    </div>
+                    @endif
                 </div>
                 <div class="w-3/5 flex flex-col gap-2">
                     <h1 class="text-3xl font-semibold">{{ $product->name }}</h1>
@@ -62,7 +81,11 @@
                             @csrf
                             <button type="submit" class="bg-red-500 text-white p-2 rounded hover:bg-red-600 w-full">Tambah ke Keranjang</button>
                         </form>
-                        <a href="" class="bg-white p-2 border rounded border-red-500 hover:bg-red-100 text-red-500 text-center">Beli Sekarang</a>
+                        <form action="{{ route('checkout.buy-now', $product->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="w-full bg-white p-2 border rounded border-red-500 hover:bg-red-100 text-red-500 text-center">Beli Sekarang</button>
+                        </form>
+                        {{-- <a href="{{ route('checkout.buy-now', $product->id) }}" class="bg-white p-2 border rounded border-red-500 hover:bg-red-100 text-red-500 text-center">Beli Sekarang</a> --}}
                     </div>
                 </div>
             </div>
@@ -278,5 +301,134 @@
     {{-- <section class="px-6 pb-6">
         <h1 class="font-semibold text-3xl font-serif">Produk Mirip</h1>
     </section> --}}
+
+@endsection
+
+
+@section('style')
+    <style>
+        .my-slides {
+            display: none;
+        }
+        img {
+            vertical-align: middle;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            background: #959595;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: -30px;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev {
+            left: -30px;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        /* Caption text */
+        .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Number text (1/3 etc) */
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+
+        /* The dots/bullets/indicators */
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+
+        /* Fading animation */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
+
+        /* On smaller screens, decrease text size */
+        @media only screen and (max-width: 300px) {
+            .prev, .next,.text {font-size: 11px}
+        }
+    </style>
+@endsection
+
+
+@section('script')
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+        
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+        
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+        
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("my-slides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+        }
+    </script>
 
 @endsection

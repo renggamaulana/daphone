@@ -24,9 +24,11 @@ class ProductResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                ->required() // cannot empty
-                ->maxLength(255), // max char 255
-
+                ->required()
+                ->maxLength(255),
+                // Slug field bisa disembunyikan atau hanya untuk tampil baca
+                Forms\Components\TextInput::make('slug')
+                ->hidden(),
                 Forms\Components\Textarea::make('description')
                                 ->required(),
 
@@ -78,6 +80,8 @@ class ProductResource extends Resource
                                     '1 TB' => '1 TB',
                                 ])
                                 ->required(),
+                Forms\Components\TextInput::make('slug')
+                                ->hidden(),
                 Forms\Components\Select::make('memory')
                                 ->options([
                                     '2 GB' => '2 GB',
@@ -109,6 +113,18 @@ class ProductResource extends Resource
                                 ->image()
                                 ->directory('uploads/images/products')
                                 ->required(),
+                Forms\Components\Repeater::make('images')
+                    ->relationship('images') // Relasi ke model ProductImage
+                    ->schema([
+                            Forms\Components\FileUpload::make('image_path')
+                            ->disk('public') // Sesuaikan dengan disk yang Anda gunakan
+                            ->image()
+                            ->required(),
+                    ])
+                    ->columns(2) // Menentukan jumlah kolom yang ditampilkan
+                    ->required()
+                    ->minItems(1) // Minimum item yang dibutuhkan
+                    ->maxItems(10), // Maksimum item yang diizinkan
                 Forms\Components\DatePicker::make('release_date')
                                 ->required(),
             ]);

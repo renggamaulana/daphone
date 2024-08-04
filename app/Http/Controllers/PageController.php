@@ -26,9 +26,4 @@ class PageController extends Controller
         return view('pages.about');
     }
 
-    public function cart()
-    {
-        return view('pages.cart');
-    }
-
 }

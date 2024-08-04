@@ -35,13 +35,19 @@ class CheckoutController extends Controller
             // Jika sudah ada, tidak perlu melakukan apa-apa karena satu klik "Add to Cart" menambahkan satu produk
         } else {
             // Jika belum ada, tambahkan produk ke keranjang
-            Cart::create([
+            $cart = Cart::create([
                 'user_id' => Auth::id(),
                 'product_id' => $product->id,
             ]);
         }
 
         return redirect()->route('checkout.cart')->with('success', 'Product added to cart successfully.');
+    }
+
+    public function buyNow(Product $product)
+    {
+        $product = $product;
+        dd($product);
     }
 
     public function deleteCart(Cart $cart)

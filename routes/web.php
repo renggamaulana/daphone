@@ -25,7 +25,7 @@ Route::get('/about', [PageController::class, 'about'])->name('about');
 
 Route::prefix('products')->group(function() {
     Route::get('/', [ProductController::class ,'index'])->name('products.index');
-    Route::get('/{id}', [ProductController::class, 'show'])->name('products.show');
+    Route::get('/{slug}', [ProductController::class, 'show'])->name('products.show');
 });
 Route::get('/flash-sale', [PageController::class ,'flashSale'])->name('flash-sale');
 
@@ -40,7 +40,6 @@ Route::prefix('sell-phone')->group(function() {
     Route::get('confirm', [SellPhoneController::class, 'confirm'])->name('sell-phone.confirm');
     Route::get('confirmed', [SellPhoneController::class, 'confirmed'])->name('sell-phone.confirmed');
 });
-Route::get('/cart', [PageController::class ,'cart'])->name('cart');
 
 Route::middleware('auth')->group(function() {
     Route::prefix('account')->group(function() {
@@ -55,25 +54,21 @@ Route::middleware('auth')->group(function() {
         Route::get('/orders', [AccountController::class, 'orders'])->name('orders');
         Route::get('/address', [AccountController::class, 'address'])->name('address');
     });
-});
 
-
-
-Route::prefix('checkout')->group(function(){
-    Route::get('guest', [CheckoutController::class, 'guest'])->name('checkout.guest');
-    Route::get('account', [CheckoutController::class, 'account'])->name('checkout.account');
-    Route::post('store-cart-data', [CheckoutController::class, 'storeCartData'])->name('checkout.storeCartData');
-    Route::get('cart', [CheckoutController::class, 'cart'])->name('checkout.cart');
-    Route::post('{product}/add-to-cart', [CheckoutController::class, 'addToCart'])->name('checkout.add-to-cart');
-    Route::delete('cart/{cart}', [CheckoutController::class, 'deleteCart'])->name('checkout.delete-cart');
-    Route::get('shipping', [CheckoutController::class, 'shipping'])->name('checkout.shipping');
-    Route::get('payment', [CheckoutController::class, 'payment'])->name('checkout.payment');
-    Route::get('confirm-payment', [CheckoutController::class, 'confirmPayment'])->name('checkout.confirm-payment');
+    Route::prefix('checkout')->group(function(){
+        Route::get('guest', [CheckoutController::class, 'guest'])->name('checkout.guest');
+        Route::get('account', [CheckoutController::class, 'account'])->name('checkout.account');
+        Route::post('store-cart-data', [CheckoutController::class, 'storeCartData'])->name('checkout.storeCartData');
+        Route::get('cart', [CheckoutController::class, 'cart'])->name('checkout.cart');
+        Route::post('{product}/add-to-cart', [CheckoutController::class, 'addToCart'])->name('checkout.add-to-cart');
+        Route::delete('cart/{cart}', [CheckoutController::class, 'deleteCart'])->name('checkout.delete-cart');
+        Route::post('{product}/buy-now', [CheckoutController::class, 'buyNow'])->name('checkout.buy-now');
+        Route::get('shipping', [CheckoutController::class, 'shipping'])->name('checkout.shipping');
+        Route::get('payment', [CheckoutController::class, 'payment'])->name('checkout.payment');
+        Route::get('confirm-payment', [CheckoutController::class, 'confirmPayment'])->name('checkout.confirm-payment');
+    });
 });
 Route::post('submit-payment', [CheckoutController::class, 'submitPayment']);
 
-Route::prefix('products')->group(function(){
-    Route::get('/', [ProductController::class, 'index'])->name('products');
-});
 
 

@@ -62,6 +62,10 @@ class AccountController extends Controller
     }
 
     public function address() {
-        return view('pages.account.address');
+        $authUser = Auth()->user();
+        $user = User::with('addresses')->findOrFail($authUser->id);
+        return view('pages.account.address', [
+            'user' => $user
+        ]);
     }
 }
