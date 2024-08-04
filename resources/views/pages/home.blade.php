@@ -391,6 +391,9 @@
         slides[slideIndex-1].style.display = "block";  
         dots[slideIndex-1].className += " active";
     }
+    let slideInterval = setInterval(function() {
+        plusSlides(1);
+    }, 4000);
 </script>
 
 @endsection
