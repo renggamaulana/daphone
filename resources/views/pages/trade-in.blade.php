@@ -3,9 +3,9 @@
 @section('title', 'Trade-In') 
 
 @section('content')
-    <section class="p-10">
-        <h1 class="text-5xl text-center">Dapatkan gadget impianmu dengan mudah, tukar tambah disini!</h1>
-        <div class="border p-10 mt-5 bg-white">
+    <section class="p-5 md:p-10">
+        <h1 class="text-xl md:text-5xl font-semibold font-serif text-center">Dapatkan gadget impianmu dengan mudah, tukar tambah disini!</h1>
+        <div class="border p-5 md:p-10 mt-5 bg-white">
 
             {{-- Form --}}
             <form action="{{ route('trade-in.confirm') }}" method="get" class="mt-4 flex flex-col gap-5">
@@ -15,7 +15,7 @@
                         <label class="text-gray-600 font-semibold" for="name">Nama</label>
                         <input type="text" name="nama" id="nama" class="border border-gray-300 rounded px-3 py-2">
                     </div>
-                    <div class="grid grid-cols-2 gap-3">
+                    <div class="grid  md:grid-cols-2 gap-3">
                         <div class="flex flex-col gap-1">
                             <label class="text-gray-600 font-semibold" for="email">Email</label>
                             <input type="email" name="email" id="email" class="border border-gray-300 rounded px-3 py-2">

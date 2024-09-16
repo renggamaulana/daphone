@@ -12,7 +12,7 @@
                 <a href="{{ route('orders') }}" class="@if(request()->routeIs('orders')) text-gray-700 bg-gray-100 @endif text-gray-400 font-semibold hover:text-gray-700 hover:bg-gray-100 px-2 py-1 rounded block w-full">Pesanan</a>
             </li>
             <li class="w-full">
-                <a href="{{ route('address') }}" class="@if(request()->routeIs('address')) text-gray-700 bg-gray-100 @endif text-gray-400 font-semibold hover:text-gray-700 hover:bg-gray-100 px-2 py-1 rounded block w-full">Alamat</a>
+                <a href="{{ route('account.address') }}" class="@if(request()->routeIs('account.address')) text-gray-700 bg-gray-100 @endif text-gray-400 font-semibold hover:text-gray-700 hover:bg-gray-100 px-2 py-1 rounded block w-full">Alamat</a>
             </li>
             <hr>
             <a href="{{ route('logout') }}" class="bg-red-600 text-white text-md p-2 text-center rounded font-semibold">Keluar</a>

@@ -6,13 +6,13 @@
 
     <section class="px-6 pb-6 mt-6">
         <div class="border rounded-lg bg-white w-full p-10">
-            <div class="flex gap-5">
+            <div class="flex flex-wrap md:flex-nowrap gap-5">
                 <div class="w-2/5 relative grow-0 basis-full md:basis-2/5">
                     @if(count($product->images) > 0)
                         <div class="relative max-w-[300px] m-auto">
                             @foreach($product->images as $productImage)
                                 <div class="my-slides fade">
-                                    <img class="max-h-[300px] mx-auto object-cover"" src="{{ Storage::url($productImage->image_path) }}" alt="{{ $product->name }}">
+                                    <img class="max-h-[300px] mx-auto object-contain"" src="{{ Storage::url($productImage->image_path) }}" alt="{{ $product->name }}">
                                     <div class="flex gap-3 relative justify-center mt-1">
                                         <span class="bg-gray-200 py-1 px-3 rounded-lg">{{ $product->guarantee }}</span>
                                         <span class="bg-gray-200 py-1 px-3 rounded-lg">{{ $product->signal_status }}</span>
@@ -34,19 +34,11 @@
                         </div>
                     @endif
                 </div>
-                <div class="w-3/5 flex flex-col gap-2">
+                <div class="md:w-3/5 flex flex-col gap-2">
                     <h1 class="text-3xl font-semibold">{{ $product->name }}</h1>
                     <div>
                         <span class="text-xl text-gray-500 font-semibold">{{ $product->storage }} - {{ $product->color }}</span>
                     </div>
-                    <!-- Tampilkan peringkat saat ini -->
-                    {{-- <div class="mb-2">
-                        @if ($product->rating_count > 0)
-                            Rated: {{ $product->rating }}/5 ({{ $product->rating_count }} ratings)
-                        @else
-                            Belum ada ulasan
-                        @endif
-                    </div> --}}
                     <div class="flex">
                         <h3 class="text-3xl font-semibold text-gray-600">Rp {{ number_format($product->price, 2, ',', '.') }}</h3>
                         @if($product->discount)
@@ -81,18 +73,18 @@
                             @csrf
                             <button type="submit" class="bg-red-500 text-white p-2 rounded hover:bg-red-600 w-full">Tambah ke Keranjang</button>
                         </form>
-                        <form action="{{ route('checkout.buy-now', $product->id) }}" method="POST">
+                        <form action="{{ route('checkout.buy-now') }}" method="POST">
                             @csrf
+                            <input type="hidden" value="{{ $product->id }}" name="id">
                             <button type="submit" class="w-full bg-white p-2 border rounded border-red-500 hover:bg-red-100 text-red-500 text-center">Beli Sekarang</button>
                         </form>
-                        {{-- <a href="{{ route('checkout.buy-now', $product->id) }}" class="bg-white p-2 border rounded border-red-500 hover:bg-red-100 text-red-500 text-center">Beli Sekarang</a> --}}
                     </div>
                 </div>
             </div>
             <hr class="my-8">
             <div>   
-                <h1 class="font-serif text-2xl font-semibold">90+ fungsi telah diuji oleh Jagofon pada semua produk, termasuk:</h1>
-                <div class="flex justify-between mt-3">
+                <h1 class="font-serif text-2xl font-semibold">90+ fungsi telah diuji oleh Daphone pada semua produk, termasuk:</h1>
+                <div class="grid grid-cols-1 md:grid-cols-3 mt-3">
                     <div class="flex flex-col gap-2">
                         <div class="flex gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-teal-400">

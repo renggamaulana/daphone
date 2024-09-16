@@ -53,28 +53,31 @@
         <aside class="w-2/6 flex flex-col gap-5">
             <div class="border rounded-lg p-6 self-start bg-white w-full">
                 <div class="divide-y">
-                    <div class="py-3 first:pt-0">
-                        <div class="flex items-start">
-                            <div class="size-12">
-                                <img src="{{ asset('images/product1.jpg') }}" alt="">
+                    @foreach($products as $product)
+                        <div class="py-3 first:pt-0">
+                        
+                            <div class="flex items-start">
+                                <div class="size-28">
+                                    <img class="max-w-24 max-h-24 object-cover" src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}">
+                                </div>
+                                <div class="pl-1 text-sm">
+                                    <p class="font-medium">{{ $product->name }} - {{ $product->storage }} - {{ $product->color }}</p>
+                                    <p>Kondisi: {{ $product->condition }}</p>
+                                </div>
                             </div>
-                            <div class="pl-1 text-sm">
-                                <p class="font-medium">iPhone 11 - 64 GB - White</p>
-                                <p>Kondisi: Fair</p>
+        
+                            <div class="mt-2 text-xs">
+                                <div class="flex justify-between">
+                                    <p>Harga Produk</p>
+                                    <p>Rp {{ number_format($product->price, 0, ',', '.') }}</p>
+                                </div>
+                                {{-- <div class="flex justify-between">
+                                    <p>Jaminan 6 Bulan</p>
+                                    <p>Rp 272.500</p>
+                                </div> --}}
                             </div>
                         </div>
-    
-                        <div class="mt-2 text-xs">
-                            <div class="flex justify-between">
-                                <p>Harga Produk</p>
-                                <p>Rp 5.450.000</p>
-                            </div>
-                            <div class="flex justify-between">
-                                <p>Jaminan 6 Bulan</p>
-                                <p>Rp 272.500</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                     <div class="flex justify-between border-t py-3 text-xs">
                         <p>JNE</p>
                         <p>Rp 0</p>
@@ -82,7 +85,7 @@
                 </div>
                 <div class="flex justify-between border-t py-3">
                     <h1 class="font-semibold">Total</h1>
-                    <p class="font-semibold">Rp 4.500.000</p>
+                    <p class="font-semibold">Rp {{ number_format($totalAmount, 0, ',', '.') }}</p>
                 </div>
             </div>
             <div class="pt-3 flex">

@@ -45,26 +45,29 @@ Route::middleware('auth')->group(function() {
     Route::prefix('account')->group(function() {
         Route::prefix('profile')->group(function() {
             Route::get('/', [AccountController::class, 'profile'])->name('profile');
-            Route::post('upadate', [AccountController::class, 'updateProfile'])->name('update-profile');
+            Route::post('update', [AccountController::class, 'updateProfile'])->name('update-profile');
         });
         Route::prefix('security')->group(function(){
             Route::get('/', [AccountController::class, 'security'])->name('security');
             Route::post('change-password', [AccountController::class, 'changePassword'])->name('change-password');
         });
         Route::get('/orders', [AccountController::class, 'orders'])->name('orders');
-        Route::get('/address', [AccountController::class, 'address'])->name('address');
+        Route::prefix('address')->group(function() {
+            Route::get('/', [AccountController::class, 'address'])->name('account.address');
+            Route::post('add-address', [AccountController::class, 'addAddress'])->name('account.add-address');
+            Route::delete('delete-address/{id}', [AccountController::class, 'deleteAddress'])->name('account.delete-address');
+        });
     });
 
     Route::prefix('checkout')->group(function(){
         Route::get('guest', [CheckoutController::class, 'guest'])->name('checkout.guest');
-        Route::get('account', [CheckoutController::class, 'account'])->name('checkout.account');
         Route::post('store-cart-data', [CheckoutController::class, 'storeCartData'])->name('checkout.storeCartData');
         Route::get('cart', [CheckoutController::class, 'cart'])->name('checkout.cart');
         Route::post('{product}/add-to-cart', [CheckoutController::class, 'addToCart'])->name('checkout.add-to-cart');
         Route::delete('cart/{cart}', [CheckoutController::class, 'deleteCart'])->name('checkout.delete-cart');
-        Route::post('{product}/buy-now', [CheckoutController::class, 'buyNow'])->name('checkout.buy-now');
-        Route::get('shipping', [CheckoutController::class, 'shipping'])->name('checkout.shipping');
-        Route::get('payment', [CheckoutController::class, 'payment'])->name('checkout.payment');
+        Route::post('buy-now', [CheckoutController::class, 'buyNow'])->name('checkout.buy-now');
+        Route::post('shipping', [CheckoutController::class, 'shipping'])->name('checkout.shipping');
+        Route::post('payment', [CheckoutController::class, 'payment'])->name('checkout.payment');
         Route::get('confirm-payment', [CheckoutController::class, 'confirmPayment'])->name('checkout.confirm-payment');
     });
 });

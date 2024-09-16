@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -67,5 +68,29 @@ class AccountController extends Controller
         return view('pages.account.address', [
             'user' => $user
         ]);
+    }
+
+    public function addAddress(Request $request)
+    {
+        $userId = Auth::user()->id;
+        $user = User::findOrFail($userId);
+        $user->addresses()->create([
+            'recipient_name' => $request->recipient_name,
+            'type' => $request->type,
+            'phone_number' => $request->phone_number,
+            'address_line1' => $request->address_line1,
+            'state' => $request->state,
+            'city' => $request->city,
+            'postal_code' => $request->postal_code,
+            'district' => $request->district,
+        ]);
+
+        return redirect()->back()->with('success', 'Alamat berhasil ditambahkan.');
+    }
+
+    public function deleteAddress($id)
+    {
+        $address = Address::where('user_id', Auth::user()->id)->findOrFail($id)->delete();
+        return redirect()->back()->with('success', 'Alamat berhasil dihapus.');
     }
 }

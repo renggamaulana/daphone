@@ -23,7 +23,23 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')
+                                            ->required() // cannot empty
+                                            ->maxLength(255), // max char 255
+
+                Forms\Components\TextInput::make('email')
+                                            ->required() // cannot empty
+                                            ->email() // email validation
+                                            ->maxLength(255), // max char 255
+                Forms\Components\TextInput::make('phone_number')
+                                            ->required() // cannot empty
+                                            ->maxLength(255), // max char 255
+
+                Forms\Components\TextInput::make('password')
+                                            ->required() // cannot empty
+                                            ->password() //  password text input
+                                            ->revealable() // hide show password
+                                            ->maxLength(255), // max char 255
             ]);
     }
 
@@ -31,9 +47,9 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('email'),
-                Tables\Columns\TextColumn::make('phone_number'),
+                Tables\Columns\TextColumn::make('name')->searchable(),
+                Tables\Columns\TextColumn::make('email')->searchable(),
+                Tables\Columns\TextColumn::make('phone_number')->searchable(),
             ])
             ->filters([
                 //
